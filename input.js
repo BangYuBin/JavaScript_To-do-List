@@ -17,7 +17,8 @@ function add_task(){
     let remove = document.createElement('button');
     let remove_Text = document.createTextNode("삭제");
     remove.setAttribute('class', 'btn-rem');
-    remove.setAttribute('onclick', 'fun_remove()');
+    //remove.setAttribute('onclick', 'fun_remove()'); -> 왜 제대로 작동안되는지 알아보기
+    remove.addEventListener('click', fun_remove);
     remove.appendChild(remove_Text);
 
     //list만들기
@@ -35,4 +36,15 @@ function add_task(){
 
     document.getElementById('listLayer').appendChild(tr);
     task = '';
+}
+//할 일 삭제 함수
+function fun_remove(){
+    let parent = document.getElementById('listLayer');
+    let removeFac = this.parentNode.parentNode; 
+    parent.removeChild(removeFac);
+}
+
+//체크 시 이벤트??
+function fun_checked(){
+
 }
