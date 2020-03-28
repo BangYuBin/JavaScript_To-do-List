@@ -2,3 +2,8 @@
     background-color:lightskyblue;
     
 }
+.checked_task{
+    color:gray;
+    text-decoration:line-through;
+}
+

@@ -2,16 +2,18 @@ document.getElementById('inputButton').addEventListener('click',add_task);
 
 //할 일 추가 함수
 function add_task(){
-    let task = document.querySelector('.input').value;
+    let task = document.querySelector('.input');
     if(!task){
         alert("내용을 입력해주세요.");
     }
 
     let tr = document.createElement('tr');
+    //tr.setAttribute('class','table_tr');
     //체크박스 생성
     let input = document.createElement('input');
     input.setAttribute('type', 'checkbox');
     input.setAttribute('class', 'btn-chk');
+    input.addEventListener('click', fun_checked);
 
     //삭제 버튼 생성    
     let remove = document.createElement('button');
@@ -27,7 +29,7 @@ function add_task(){
     tr.appendChild(td01);
 
     let td02 = document.createElement('td');
-    td02.innerHTML = task;
+    td02.innerHTML = task.value;
     tr.appendChild(td02);
 
     let td03 = document.createElement('td');
@@ -35,7 +37,7 @@ function add_task(){
     tr.appendChild(td03);
 
     document.getElementById('listLayer').appendChild(tr);
-    task = '';
+    task.value = '';
 }
 //할 일 삭제 함수
 function fun_remove(){
@@ -46,5 +48,11 @@ function fun_remove(){
 
 //체크 시 이벤트??
 function fun_checked(){
-
+    let text = this.parentNode.nextSibling;
+    if(this.checked){
+        text.setAttribute('class', 'checked_task');
+    }
+    else{
+        text.removeAttribute('class');
+    }
 }
