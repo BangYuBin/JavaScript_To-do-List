@@ -3,7 +3,7 @@ document.getElementById('inputButton').addEventListener('click',add_task);
 //할 일 추가 함수
 function add_task(){
     let task = document.querySelector('.input');
-    if(!task){
+    if(!(task.value)){
         alert("내용을 입력해주세요.");
     }
 
@@ -42,9 +42,18 @@ function add_task(){
 }
 //할 일 삭제 함수
 function fun_remove(){
-    let parent = document.getElementById('listLayer');
-    let removeFac = this.parentNode.parentNode; 
-    parent.removeChild(removeFac);
+    let text = this.parentNode.previousSibling;
+    console.log(text);
+    let content = text.innerText + "을(를) 정말 삭제하시겠습니까?"
+    let re = confirm(content);
+    if(re){
+        let parent = document.getElementById('listLayer');
+        let removeFac = this.parentNode.parentNode; 
+        parent.removeChild(removeFac);
+    }
+    else{
+        alert("삭제를 취소하였습니다.");
+    }
 }
 
 //체크 시 이벤트??
