@@ -5,6 +5,7 @@ function add_task(){
     let task = document.querySelector('.input');
     if(!(task.value)){
         alert("내용을 입력해주세요.");
+        return false;
     }
 
     let tr = document.createElement('tr');
